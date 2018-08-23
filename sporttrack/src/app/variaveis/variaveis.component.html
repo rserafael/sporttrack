@@ -1,0 +1,72 @@
+<mat-card class="mat-elevation-z8">
+  <mat-card>
+
+    <form>
+      <mat-form-field class="search-field">
+        <input matInput placeholder="Procurar" value="" (keyup)="applyFilter($event.target.value)">
+      </mat-form-field>
+    </form>
+
+    <mat-table #table [dataSource]="dataSource" matSort aria-label="Elements">
+
+      <!-- Id Column -->
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.id}}</mat-cell>
+      </ng-container>
+
+      <!-- Nome Column -->
+      <ng-container matColumnDef="nome">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.nome}}</mat-cell>
+      </ng-container>
+
+      <!-- Peso Column -->
+      <ng-container matColumnDef="peso">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Peso</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.peso}}</mat-cell>
+      </ng-container>
+
+      <!-- Acoes Column -->
+      <ng-container matColumnDef="acoes">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Ações</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <!--<a matTooltip="Editar a variável">-->
+          <!--<i class="fas  fa fa-clipboard fa-2x" style="color: rgb(94, 146, 17)" (click)=" editarVariavel(row.id)"></i>-->
+          <!--</a>-->
+          <a matTooltip="Editar dados da variável">
+            <i class="fas fa fa-edit fa-2x" style="color:blue" (click)=" editarDadosVariavel(row.id)"></i>
+          </a>
+          <!--<a matTooltip="Excluir variavel">-->
+          <!--<i class="fas fa fa-window-close fa-2x" style="color:red" (click)="deletarVariavel(row.id)"></i>-->
+          <!--</a>-->
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;let i = index" class="selectedRow" (click)="onSelect(row,i)"></mat-row>
+
+    </mat-table>
+
+    <mat-paginator #paginator [length]="0" [pageIndex]="0" [pageSize]="5" [pageSizeOptions]="[5, 10, 15]">
+    </mat-paginator>
+
+    <mat-card-actions>
+      <!--<button routerlink="/novavariavel" mat-raised-button matTooltip="Criar nova variavel" color="primary" (click)="criarVariavel()" *ngIf="dataLoaded === true">Nova variavel</button>-->
+      <button [disabled]="!admin" style="margin-left: 15px" routerlink="/" mat-button matTooltip="Criar nova variavel" (click)="criarVariavel()" *ngIf="dataLoaded === true">Nova variável</button>
+      <button [disabled]="!admin" *ngIf="variavelParaEdicao" mat-button matTooltip="Salvar variavel" (click)="salvarVariavel()">Salvar</button>
+
+    </mat-card-actions>
+
+    <mat-card-actions>
+      <app-variavel [variavelParaEdicao]="variavelParaEdicao" *ngIf="variavelParaEdicao"></app-variavel>
+
+    </mat-card-actions>
+
+
+    <div class="example-section" style="align:center;width:100%">
+      <mat-progress-spinner style="margin-left: 250px;" *ngIf="dataLoaded === false" [diameter]="60" [color]="spinnerColor" [mode]="spinnerMode">
+      </mat-progress-spinner>
+    </div>
+  </mat-card>
+</mat-card>

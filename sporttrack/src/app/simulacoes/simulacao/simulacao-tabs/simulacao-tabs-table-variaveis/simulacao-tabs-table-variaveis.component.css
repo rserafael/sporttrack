@@ -1,0 +1,22 @@
+.mat-table {
+  width: 95%;
+  margin-top: 5px;
+}
+
+.mat-column-select{
+  flex: 0 0 10%;
+  border-bottom: 0px;
+}
+
+.mat-column-name{
+  flex: 0 0 55%;
+}
+
+.mat-column-peso{
+  flex: 0 0 30%;
+  border-bottom: 0px;
+}
+
+.mat-form-field {
+  width: 100px;
+}

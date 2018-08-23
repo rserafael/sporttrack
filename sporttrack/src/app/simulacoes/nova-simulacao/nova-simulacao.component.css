@@ -1,0 +1,74 @@
+.card-nova-simulacao {
+  margin-left: 40px;
+}
+
+.example-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+.example-container > * {
+    width: 100%;
+}
+
+.example-additional-selection {
+    opacity: 0.75;
+    font-size: 0.75em;
+}
+
+.mat-column-nome{
+    flex: 0 300px;
+    margin-left: 8px;
+}
+
+.mat-column-select{
+    flex: 0 0 80px;
+}
+
+table {
+    position: relative;
+    width: 100%;
+}
+
+button{
+    margin-left: 8px;
+    margin-top: 8px;
+}
+
+input.currency {
+    text-align: left;
+    padding-left: 4px;
+}
+
+mat-icon {
+    cursor: pointer;
+}
+
+.mat-column-valor{
+    flex: 0 100px;
+    margin-left: 8px;
+    margin-bottom: 2px;
+}
+
+.borderstyle {
+    position: relative;
+    border: 1px solid gray;
+    border-radius: 5px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    height: 40px;
+}
+
+.fixed-div {
+    position: sticky;
+    position: -webkit-sticky; /* For macOS/iOS Safari */
+    top: 0; /* Sets the sticky toolbar to be on top */
+    z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
+}
+
+label{
+    position: relative;
+    border: 1px solid gray;
+    border-radius: 5px;
+    margin-top: 20px;
+}

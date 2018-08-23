@@ -1,0 +1,19 @@
+.chartwrapper {
+  width: 100%;
+  vertical-align: top;
+  background-color: white;
+}
+
+.chartdiv {
+  width: 95%;
+  height: 100%;
+}
+
+.map-content {
+  width: 95%;
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  height: 600px;
+}

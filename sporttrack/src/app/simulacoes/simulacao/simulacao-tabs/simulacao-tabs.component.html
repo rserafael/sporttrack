@@ -1,0 +1,20 @@
+<div style="min-height: 665px;">
+  <mat-card-content>
+    <h2 class="example-h2">Configurações</h2>
+    <mat-tab-group mat-stretch-tabs="always">
+      <mat-tab label="Entidades">
+          <simulacoes-simulacao-simulacao-tabs-simulacao-tabs-table-entidades [modalidade]="modalidade" [simulacao]="simulacaoParaEditar" [entidades]="entidades" *ngIf="entidades"></simulacoes-simulacao-simulacao-tabs-simulacao-tabs-table-entidades>
+      </mat-tab>
+      <mat-tab label="Variáveis">
+          <simulacoes-simulacao-simulacao-tabs-simulacao-tabs-table-variaveis [modalidade]="modalidade" [simulacao]="simulacaoParaEditar" [variaveis]="variaveis" *ngIf="variaveis"></simulacoes-simulacao-simulacao-tabs-simulacao-tabs-table-variaveis>
+      </mat-tab>
+       <mat-tab label="Descrição">
+         <mat-card>
+           <mat-card-content style="height: 450px" class="">
+             <p>{{descricao}}</p>
+           </mat-card-content>
+         </mat-card>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-card-content>
+</div>

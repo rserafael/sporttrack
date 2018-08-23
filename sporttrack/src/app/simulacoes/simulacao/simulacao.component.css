@@ -1,0 +1,19 @@
+.card-simulacao {
+  display: inline-block;
+  margin-left: 15px;
+  margin-top: 15px;
+  vertical-align: top;
+}
+
+.card-simulacao-tabela {
+  width: 60%;
+}
+
+.card-simulacao-config {
+  width: 30%;
+}
+
+card-simulacao-lista {
+  width: 100%;
+  min-height: 600px;
+}

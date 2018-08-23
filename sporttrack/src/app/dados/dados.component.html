@@ -1,0 +1,15 @@
+<mat-card>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title *ngIf="variavelParaEditar">Variável: {{variavelParaEditar.nome}}</mat-card-title>
+    </mat-card-header>
+    <hot-table  [licenseKey]="licenseKey" [height]="height" [formulas]="formulas" [rowHeaderWidth]="rowHeaderWidth" [columns]="columns" [colHeaders]="colHeaders"
+      [rowHeaders]="false" [data]="data" [settings]="settingsObj" [columnSorting]="columnSorting" [fixedColumnsLeft]=3 (afterSetDataAtCell)="onAfterChange($event)" (afterPaste)="onAfterPaste($event)"></hot-table>
+
+    <mat-card-actions style="margin-left: 0px">
+      <button mat-button matTooltip="Salva a variável com seus respectivos dados no banco de dados" *ngIf="variavelParaEditar" (click)="salvarPlanilha()">Salvar</button>
+      <button mat-button matTooltip="Cancela a edição dos dados da variável" *ngIf="variavelParaEditar" (click)="cancelarAletracaoPlanilha()">Cancelar</button>
+    </mat-card-actions>
+  </mat-card>
+</mat-card>
+

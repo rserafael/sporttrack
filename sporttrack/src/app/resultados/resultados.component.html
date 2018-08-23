@@ -1,0 +1,73 @@
+<mat-card class="mat-elevation-z1">
+  <mat-card>
+    <form>
+      <mat-form-field>
+        <mat-select placeholder="Mês de referência" [(ngModel)]="selectedValue" name="mes" (selectionChange)="changeMesReferencia($event.value)">
+          <mat-option *ngFor="let mes of meses" [value]="mes.value">
+            {{mes.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="search-field">
+        <input matInput placeholder="Procurar" value="" (keyup)="applyFilter($event.target.value)">
+      </mat-form-field>
+    </form>
+
+    <mat-table #table [dataSource]="dataSource" matSort aria-label="Elements">
+
+      <!-- Entidade Column -->
+      <ng-container matColumnDef="entidade">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Entidade</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.entidade}}</mat-cell>
+      </ng-container>
+
+      <!-- Grupo Column -->
+      <ng-container matColumnDef="grupo">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Grupo</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.grupo}}</mat-cell>
+      </ng-container>
+
+      <!-- Pontos com peso Column -->
+      <ng-container matColumnDef="ptsPeso">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Pontos com peso</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.ptsPeso}}</mat-cell>
+      </ng-container>
+
+      <!-- Investimento real Column -->
+      <ng-container matColumnDef="investimento">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Investimento real</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.investimento.toLocaleString('pt')}}</mat-cell>
+      </ng-container>
+
+      <!-- Investimento proporcional Column -->
+      <ng-container matColumnDef="invProporcional">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Investimento proporcional</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.invProporcional.toLocaleString('pt')}}</mat-cell>
+      </ng-container>
+
+      <!-- Valor por ponto Column -->
+      <ng-container matColumnDef="valorPonto">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Valor por ponto</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.valorPonto.toLocaleString('pt')}}</mat-cell>
+      </ng-container>
+
+      <!-- Ágio Column -->
+      <ng-container matColumnDef="agio">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Ágio</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.agio}}</mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+    <mat-paginator #paginator [length]="0" [pageIndex]="0" [pageSize]="10" [pageSizeOptions]="[5, 10, 15, 20]">
+    </mat-paginator>
+
+    <div class="spinner-section">
+      <mat-progress-spinner *ngIf="dataLoaded === false" [diameter]="60" [color]="spinnerColor" [mode]="spinnerMode">
+      </mat-progress-spinner>
+    </div>
+  </mat-card>
+
+</mat-card>

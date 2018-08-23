@@ -1,0 +1,9 @@
+.mat-table {
+  width: 95%;
+  margin-top: 5px;
+}
+
+.mat-column-select{
+  flex: 0 0 15%;
+  border-bottom: 0px;
+}

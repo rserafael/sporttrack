@@ -1,0 +1,43 @@
+<mat-sidenav-container class="sidenav-container" *ngIf="isLoggedIn$ | async">
+ <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport="true"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="!(isHandset$ | async)">
+    <mat-toolbar style="background-color: #034F83; width: 186px"><img style="margin-left: 24px" src="../../assets/images/logos/sport-track-white.png" width="100"></mat-toolbar>
+    <div>
+      <span style="margin-left: 30px"><img src="../../assets/images/logos/caixa.jpg" width="120"></span>
+    </div>
+    <div style="margin: 15px; font-family: Roboto, Helvetica Neue, sans-serif">
+      <p>Bem-vindo,<br>
+      <b>{{nomeUsuario}}</b>
+      </p>
+    </div>
+    <mat-nav-list>
+      <a routerLink="/modalidades" mat-list-item (click)="resetarModalidade()"><fa name="futbol" style="margin-right: 5px"></fa> Modalidades</a>
+      <mat-divider *ngIf="selectedModalidadeName"></mat-divider>
+      <a mat-list-item routerLink="/" *ngIf="selectedModalidadeName" (click)="navegarParaDashboard(selectedModalidade)"><fa name="chart-pie" style="margin-right: 5px"></fa> Dashboard</a>
+      <a mat-list-item routerLink="/" *ngIf="selectedModalidadeName" (click)="navegarParaVariaveis(selectedModalidade)"><fa name="database" style="margin-right: 5px"></fa> Variáveis</a>
+      <a mat-list-item routerLink="/" *ngIf="selectedModalidadeName" (click)="navegarParaEntidades(selectedModalidade)"><fa name="university" style="margin-right: 5px"></fa> Entidades</a>
+      <a mat-list-item routerLink="/resultados" *ngIf="selectedModalidadeName" (click)="navegarParaResultados(selectedModalidade)"><fa name="file" style="margin-right: 5px"></fa> Resultados Oficiais</a>
+      <a mat-list-item routerLink="/" *ngIf="selectedModalidadeName" (click)="navegarParaSimulacao(selectedModalidade)"><fa name="calculator" style="margin-right: 5px"></fa> Simulação</a>
+      <mat-divider *ngIf="selectedModalidadeName"></mat-divider>
+      <a mat-list-item routerLink="/usuarios"><fa name="user" style="margin-right: 5px"></fa> Usuários</a>
+      <a mat-list-item href="/"><fa name="sign-out-alt" style="margin-right: 5px"></fa> Sair</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content class="app-toolbar" >
+    <mat-toolbar style="background-image: url('../../assets/images/background/barra-superior.jpg')">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span style="margin-left: 10px; color: white" *ngIf="selectedModalidadeName">Modalidade: {{selectedModalidadeName}}</span>
+      <span class="fill-remaining-space"></span>
+      <span style="color: white; margin-right: 20px">Sport Track Analytics</span>
+    </mat-toolbar>
+    <!-- <app-breadcrumb></app-breadcrumb> -->
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

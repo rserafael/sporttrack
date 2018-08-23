@@ -1,0 +1,15 @@
+.search-field {
+    width: 500px;
+    margin-left: 550px;
+}
+
+form{
+    display: inline-flex;
+}
+
+.spinner-section {
+    display: inline-block;
+    margin-left: 45%
+}
+
+

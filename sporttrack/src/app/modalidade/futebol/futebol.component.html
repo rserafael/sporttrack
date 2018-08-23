@@ -1,0 +1,15 @@
+<a routerLink="/dashboardfutebol" (click)="escolherModalidade()">
+    <mat-card-content>
+        <div class="card-logo">
+          <img src="../../../assets/images/logos/icone-futebol.png">
+        </div>
+        <div class="card-content">
+          <h2>Futebol</h2>
+          Entidades Analisadas: <b>{{entidades}}</b><br>
+          Indicadores: <b>{{variaveis.toLocaleString('pt')}}</b><br>
+          <p></p><br>
+          Investimento
+          <h2 style="color: #ff8000; margin-top: 0px" >R$ {{investimento.toLocaleString('pt')}}</h2>
+        </div>
+    </mat-card-content>
+</a>

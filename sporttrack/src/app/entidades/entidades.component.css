@@ -1,0 +1,41 @@
+.wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    height: 100px;
+}
+.first {
+    width: 30%;
+    float:left;
+}
+.second {
+    width: 30%;
+}
+
+table {
+    width: 100%;
+}
+
+.selectedRow:hover {
+    left: .1em;
+}
+
+.selector{
+    position: relative;
+    margin-top: 10px;
+    margin-left: 350px;
+}
+
+.right{
+    margin-left: 50px;
+    border-style: dashed;
+}
+
+.left{
+    margin-left: 50px;
+    border-style: dashed;
+}
+
+.sideBySide{
+    display: inline-flex;
+}

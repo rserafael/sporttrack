@@ -1,0 +1,19 @@
+<mat-card id="screenshot">
+  <div class="dashboard-column">
+    <futebol-ranking-table></futebol-ranking-table>
+  </div>
+  <div class="dashboard-column" style="margin-left: 15px">
+    <div>
+      <app-futebol-ficha-tecnica></app-futebol-ficha-tecnica>
+    </div>
+    <div>
+      <app-futebol-numeros></app-futebol-numeros>
+    </div>
+  </div>
+  <div class="dashboard-column" style="margin-left: 15px">
+    <app-futebol-mapa-brasil></app-futebol-mapa-brasil>
+  </div>
+  <div>
+    <button mat-button matTooltip="Tirar uma foto desta tela" (click)="takeScreenShot()">Screenshot</button>
+  </div>
+</mat-card>

@@ -1,0 +1,27 @@
+.mat-label {
+  font-size: 10px;
+}
+
+.mat-input-element{
+  font-size: 14px;
+}
+
+.mat-form-field {
+  margin-left: 10px;
+  width: 15%;
+}
+
+.example-section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 60px;
+}
+
+.example-margin {
+  margin: 0 10px;
+}
+
+.md-tooltip {
+  font-size: 10px;
+}

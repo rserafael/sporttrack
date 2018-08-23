@@ -1,0 +1,12 @@
+.historico-content {
+  width: 95%;
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  height: 445px;
+}
+
+.historico {
+  background-color: white;
+}

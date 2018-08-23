@@ -1,0 +1,14 @@
+<div class="ficha-tecnica mat-elevation-z1">
+  <mat-card-content *ngIf="entidade">
+    <div class="ficha-tecnica-content" style="margin-left: 20px">
+      <h2>Ficha Técnica</h2>
+      Entidade: <b>{{nome}} </b><br>
+      Cidade: <b>{{cidade}} </b>  UF :<b> {{uf}}</b> <br>
+      Investimento:<b style="color: #ff8000"> R$ {{investimento.toLocaleString('pt')}}</b> <br>
+    </div>
+    <div class="ficha-tecnica-logo" style="margin-top: 20px">
+      <img [src]="imagem" alt="logo" />
+    </div>
+  </mat-card-content>
+</div>
+

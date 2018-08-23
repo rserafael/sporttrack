@@ -1,0 +1,63 @@
+<mat-card>
+  <mat-card>
+    <mat-table #table [dataSource]="dataSource" matSort aria-label="Elements">
+
+      <!-- Id Column -->
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.id}}</mat-cell>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.nome}}</mat-cell>
+      </ng-container>
+
+      <!-- email Column -->
+      <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.email}}</mat-cell>
+      </ng-container>
+
+      <!-- Admin Column -->
+      <ng-container matColumnDef="admin">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Admin</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.tipo}}</mat-cell>
+      </ng-container>
+
+      <!-- ultimoLogin Column -->
+      <!-- <ng-container matColumnDef="ultimoLogin">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Último login</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.ultimoLogin.toDateString()}}</mat-cell>
+      </ng-container> -->
+
+      <!-- ativo Column -->
+      <!-- <ng-container matColumnDef="ativo">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Ativo</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.ativo}}</mat-cell>
+      </ng-container> -->
+
+      <!-- Acoes Column -->
+      <!-- <ng-container matColumnDef="acoes">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Ações</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.acoes}}</mat-cell>
+      </ng-container> -->
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row class="selectedRow" *matRowDef="let row; columns: displayedColumns;" (click)="onSelect(row)"></mat-row>
+    </mat-table>
+
+    <mat-paginator #paginator [length]="0" [pageIndex]="0" [pageSize]="5" [pageSizeOptions]="[5, 10, 15]">
+    </mat-paginator>
+
+    <mat-card-actions>
+      <button [disabled]="!admin" routerlink="/" mat-button matTooltip="Criar novo usuário" (click)="criarUsuario()">Novo usuário</button>
+
+
+    <button [disabled]="!admin" routerlink="/" mat-button matTooltip="Salvar Usuario" (click)="salvar()">Salvar</button>
+    </mat-card-actions>
+
+    <app-usuario *ngIf="this.usuario" [usuario]="this.usuario" > </app-usuario>
+  </mat-card>
+</mat-card>

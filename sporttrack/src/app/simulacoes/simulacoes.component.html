@@ -1,0 +1,63 @@
+<mat-card class="simulacao mat-elevation-z1">
+  <mat-card>
+    <mat-table #table [dataSource]="dataSource" matSort aria-label="Elements">
+
+      <!-- Id Column -->
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Simulação ID</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.id}}</mat-cell>
+      </ng-container>
+
+       <!-- Título Column -->
+       <ng-container matColumnDef="titulo">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Título</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.titulo}}</mat-cell>
+      </ng-container>
+
+      <!-- Criacao Column -->
+      <ng-container matColumnDef="criacao">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Data de criação</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.dataCriacao  | date: 'dd/MM/yyyy'}}</mat-cell>
+      </ng-container>
+
+      <!-- Execucao Column -->
+      <ng-container matColumnDef="execucao">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Data última execução</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.dataAtualizacao  | date: 'dd/MM/yyyy'}}</mat-cell>
+      </ng-container>
+
+      <!-- Entidades Column -->
+      <ng-container matColumnDef="entidades">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Número de entidades</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.entidades.length}}</mat-cell>
+      </ng-container>
+
+      <!-- Indicadores Column -->
+      <ng-container matColumnDef="indicadores">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Número de indicadores</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.variaveis.length}}</mat-cell>
+      </ng-container>
+
+      <!-- Acoes Column -->
+      <ng-container matColumnDef="acoes">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Ações</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <a matTooltip="Editar simulação"><span (click)="editarSimulacao(row.id)"><img src="../../assets/images/logos/icon-edit.png" width="28px"></span></a>
+          <a matTooltip="Excluir simulação"><span style="margin-left: 5px" (click)="deletarSimulacao(row.id)"><img src="../../assets/images/logos/icon-lixo.png" width="28px"></span></a>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+    <mat-paginator #paginator [length]="0" [pageIndex]="0" [pageSize]="10" [pageSizeOptions]="[5, 10, 15]">
+    </mat-paginator>
+
+    <mat-divider [inset]="true"></mat-divider>
+
+    <mat-card-actions>
+      <button style="margin-left: 15px" mat-button matTooltip="Criar nova simulação" (click)="onNovaSimulacao()">Nova Simulação</button>
+    </mat-card-actions>
+  </mat-card>
+</mat-card>

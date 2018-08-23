@@ -1,0 +1,96 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+$md-sporttrack: (
+  50 : #e0f2f3,
+  100 : #b3dfe2,
+  200 : #80cacf,
+  300 : #4db4bb,
+  400 : #26a4ad,
+  500 : #00949e,
+  600 : #008c96,
+  700 : #00818c,
+  800 : #007782,
+  900 : #006570,
+  A100 : #9ff3ff,
+  A200 : #6cedff,
+  A400 : #39e6ff,
+  A700 : #1fe3ff,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #ffffff,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
+$sporttrack-theme-primary: mat-palette($md-sporttrack);
+//$sporttrack-theme-accent: mat-palette($mat-lime, A200, A100, A400);
+//$sporttrack-theme-warn: mat-palette($mat-red);
+$sporttrack-theme-accent: mat-palette($md-sporttrack);
+$sporttrack-theme-warn: mat-palette($md-sporttrack);
+
+$sporttrack-theme: mat-light-theme($sporttrack-theme-primary, $sporttrack-theme-accent, $sporttrack-theme-warn);
+
+@include angular-material-theme($sporttrack-theme);
+
+.mat-header-row{
+    background-color: mat-color($sporttrack-theme-primary, 300);
+    color: mat-contrast($sporttrack-theme-primary, 300);
+}
+
+.mat-card-footer{
+    background-color: mat-color($sporttrack-theme-primary, 300);
+    color: mat-contrast($sporttrack-theme-primary, 300);
+}
+
+.mat-checkbox-checked {
+  background-color: mat-color($sporttrack-theme-primary, 100);
+  color: mat-contrast($sporttrack-theme-primary, 100);
+}
+
+.selectedRow:hover {
+  color: mat-contrast($sporttrack-theme-primary, 100);
+  background-color: mat-color($sporttrack-theme-primary, 100);
+}
+
+.mat-button {
+  background-color: #034F83;
+  color: mat-contrast($sporttrack-theme-primary, 300);
+}
+
+
+.mat-button:disabled {
+  background-color: darkslategrey;
+  color: grey;
+}
+
+
+.mat-raised-button {
+  background-color: mat-color($sporttrack-theme-primary, 300);
+  color: mat-contrast($sporttrack-theme-primary, 300);
+}
+
+.mat-header-cell {
+  background-color: mat-color($sporttrack-theme-primary, 300);
+  color: mat-contrast($sporttrack-theme-primary, 300);
+  font-size: 16px;
+}
+
+body {
+  background-color: mat-color($sporttrack-theme-primary, 50);
+}
+
+.mat-card {
+  background-color: mat-color($sporttrack-theme-primary, 50);
+}

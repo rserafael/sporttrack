@@ -1,0 +1,99 @@
+<mat-card>
+  <div>
+
+    <mat-card-header>
+      <mat-card-title>Informações pessoais</mat-card-title>
+    </mat-card-header>
+
+  </div>
+
+  <mat-form-field appearance="outline" style="width: 40%;">
+      <mat-label>Nome</mat-label>
+      <input matInput placeholder="Nome"  [(ngModel)]="this.usuario.nome">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 40%; margin-left: 200px;">
+      <mat-label>Email</mat-label>
+      <input matInput placeholder="Email"   [(ngModel)]="this.usuario.email">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 40%;">
+      <mat-select placeholder="Sexo"  [(ngModel)]="this.usuario.sexo">
+          <mat-option *ngFor="let sexo of this.sexos" [value]="sexo" >
+            {{ sexo }}
+          </mat-option>
+        </mat-select>
+      <!-- <mat-label>Sexo</mat-label>
+      <input matInput placeholder="Sexo"> -->
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 40%; margin-left: 200px;">
+      <mat-label>Data Nascimento</mat-label>
+    <input  matInput type="date" [ngModel] ="this.usuario.dataNascimento | date:'yyyy-MM-dd'" (ngModelChange)="this.usuario.dataNascimento = $event">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 40%;">
+    <mat-select placeholder="Tipo Usuario"  [(ngModel)]="this.usuario.tipo">
+      <mat-option *ngFor="let tipo of this.tipos" [value]="tipo" >
+        {{ tipo }}
+      </mat-option>
+    </mat-select>
+    <!-- <mat-label>Sexo</mat-label>
+    <input matInput placeholder="Sexo"> -->
+  </mat-form-field>
+
+
+  <mat-form-field appearance="outline"  style="width: 40%; margin-left: 200px;">
+    <mat-label>Senha</mat-label>
+    <input matInput placeholder="Senha"  type="password"  [(ngModel)]="this.usuario.senha" >
+  </mat-form-field>
+
+  <mat-divider></mat-divider><br>
+
+  <mat-card-header style="margin-top: 10px;">
+      <mat-card-title>Endereço</mat-card-title >
+    </mat-card-header>
+
+  <mat-form-field appearance="outline" style="width: 40%;">
+      <mat-label>Endereço</mat-label>
+      <input matInput placeholder="Endereço" [(ngModel)]="this.usuario.address">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 40%; margin-left: 200px;">
+      <mat-label>Complemento</mat-label>
+      <input matInput placeholder="Complemento"  [(ngModel)]="this.usuario.complemento">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" [hideRequiredMarker]="options.value.hideRequired" [floatLabel]="options.value.floatLabel" style="width: 40%; ">
+    <mat-select placeholder="UF" [(ngModel)]="estadoSelecionado" [value]="estadoSelecionado" (selectionChange)="onEstadoEScolhido(estadoSelecionado)"
+                required>
+      <mat-option *ngFor="let estado of estados" [value]="estado">
+        {{ estado }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" [hideRequiredMarker]="options.value.hideRequired" [floatLabel]="options.value.floatLabel" style="width: 40%;margin-left: 200px; ">
+    <mat-select placeholder="Município" [(ngModel)]="municipioSelecionado" [value]="municipioSelecionado" (selectionChange)="escolherMunicipio($event)"
+                required>
+      <mat-option *ngFor="let municipio of municipios" [value]="municipio">
+        {{ municipio }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 40%;">
+      <mat-label>Caixa Postal</mat-label>
+      <input matInput placeholder="Caixa Postal"  [(ngModel)]="this.usuario.cep">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 40%; margin-left: 200px;">
+      <mat-label>Telefone</mat-label>
+      <input matInput placeholder="Telefone" [(ngModel)]="this.usuario.telefone">
+  </mat-form-field>
+
+
+
+</mat-card>
+
+

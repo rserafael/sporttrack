@@ -1,0 +1,36 @@
+table {
+    width: 100%;
+}
+.selected {
+    background-color: rgb(105, 240, 102) !important;
+}
+
+.selectedRow:hover {
+    color: black;
+    background-color: #a1bbbd;
+    left: .1em;
+}
+
+.selector{
+    position: relative;
+    margin-top: 10px;
+    margin-left: 350px;
+}
+
+.right{
+    margin-left: 50px;
+    border-style: dashed;
+}
+
+.left{
+    margin-left: 50px;
+    border-style: dashed;
+}
+
+.mat-column-rank{
+    flex: 0 0 80px;
+}
+
+.mat-column-nome{
+    flex: 0 0 250px;
+}

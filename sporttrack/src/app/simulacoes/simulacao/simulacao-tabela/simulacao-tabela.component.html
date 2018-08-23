@@ -1,0 +1,58 @@
+<div class="card-simulacao-tabela">
+
+    <!-- <h5>Investimento: {{investimento.toLocaleString('pt')}}</h5> -->
+
+    <mat-form-field style="margin-left: 0px" appearance="outline" matTooltip="Verba" matTooltipPosition="above" >
+        <mat-label>VERBA</mat-label>
+        <input matInput currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" [(ngModel)]="investimentoInformado"
+            placeholder="" (keyup.enter)="onAlterarInvestimentoInformado()" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" matTooltip="Investimento Total" matTooltipPosition="above">
+        <mat-label>INVESTIMENTO TOTAL</mat-label>
+        <input matInput currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" [(ngModel)]="investimentoTotalPlanilha"
+            placeholder="Digite o valor do investimento total" disabled />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" matTooltip="Saldo" matTooltipPosition="above">
+        <mat-label>SALDO</mat-label>
+        <input matInput currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" [(ngModel)]="saldo" placeholder=""
+            disabled />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" matTooltip="Saldo não alocado" matTooltipPosition="above">
+        <mat-label>SALDO NÃO ALOCADO</mat-label>
+        <input matInput currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" [(ngModel)]="saldoNaoAlocado" placeholder=""
+            disabled />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" matTooltip="Saldo a ratear" matTooltipPosition="above">
+        <mat-label>SALDO A RATEAR</mat-label>
+        <input matInput currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" [(ngModel)]="rateioInformado" placeholder=""
+            (keyup.enter)="onAlterarRateioInformado()" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" matTooltip="ponto médio" matTooltipPosition="above">
+        <mat-label>PONTO MÉDIO</mat-label>
+        <input matInput currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" [(ngModel)]="pontoMedio" placeholder=""
+            disabled />
+    </mat-form-field>
+
+    <section class="example-section" *ngIf="progress!==100">
+        <mat-progress-bar class="example-margin" [mode]="mode" [value]="progress">
+        </mat-progress-bar>
+    </section>
+
+    <hot-table class="handsontable" #ht [hotId]="hotInstance" [data]="data" [colHeaders]="colHeaders" [colWidths]="colWidths"
+        [columns]="columns" [height]="height" [formulas]="formulas" [hiddenRows]="hiddenRows" [hiddenColumns]="hiddenColumns"
+        [licenseKey]="licenseKey" [stretchH]="stretchH" [fixedColumnsLeft]=1 (afterChange)="onAfterChanges($event, ht)" (afterRenderer)="onAfterRender($event)"></hot-table>
+
+    <div style="display: inline">
+        <mat-card-actions>
+            <button style="margin-left: 18px" [routerLink]="['/']" mat-button matTooltip="Salvar esta simulação no banco de dados" (click)="onSalvarSimulacao()">Salvar simulação</button>
+            <button id="export-file" mat-button matTooltip="Exportar esta simulação em formato CSV">Exportar Excel</button>
+        </mat-card-actions>
+    </div>
+</div>
+
+<!-- (click)="onExportarSimulacao()" -->

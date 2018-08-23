@@ -1,0 +1,5 @@
+http://api.gpetec.com.br:8081/sporttrack-web/rest/dados?variavelid=1
+http://api.gpetec.com.br:8081/sporttrack-web/rest/entidades?modalidade=1
+http://api.gpetec.com.br:8081/sporttrack-web/rest/variaveis?modalidadeId=1
+http://api.gpetec.com.br:8081/sporttrack-web/rest/pontos/meses?variavelid=1&entidadeid=1
+http://api.gpetec.com.br:8081/sporttrack-web/rest/dados/ultimoanoentidade?variavelid=1&entidadeid=1

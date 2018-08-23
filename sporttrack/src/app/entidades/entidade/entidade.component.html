@@ -1,0 +1,33 @@
+<mat-card class="example-container">
+
+  <mat-form-field [hideRequiredMarker]="options.value.hideRequired" [floatLabel]="options.value.floatLabel">
+    <input matInput placeholder="Nome da entidade" [formControl]="nome" [value]="entidade.nome" (change)="onNomeInput($event.target.value)">
+    <mat-error *ngIf="nome.invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field [hideRequiredMarker]="options.value.hideRequired" [floatLabel]="options.value.floatLabel">
+    <mat-select placeholder="UF" [(ngModel)]="estadoSelecionado" [value]="estadoSelecionado" (selectionChange)="onEstadoEScolhido(estadoSelecionado)"
+      required>
+      <mat-option *ngFor="let estado of estados" [value]="estado">
+        {{ estado }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field [hideRequiredMarker]="options.value.hideRequired" [floatLabel]="options.value.floatLabel">
+    <mat-select placeholder="Município" [(ngModel)]="municipioSelecionado" [value]="municipioSelecionado" (selectionChange)="escolherMunicipio($event)"
+      required>
+      <mat-option *ngFor="let municipio of municipios" [value]="municipio">
+        {{ municipio }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field [hideRequiredMarker]="options.value.hideRequired" [floatLabel]="options.value.floatLabel">
+    <input matInput placeholder="Grupo" [formControl]="grupo" [value]="entidade.grupo"  (change)="onGrupoInput($event.target.value)" required>
+  </mat-form-field>
+
+  <mat-form-field [hideRequiredMarker]="options.value.hideRequired" [floatLabel]="options.value.floatLabel">
+    <input matInput placeholder="Ágio máximo (%)" [formControl]="grupo" [value]="entidade.agioMax"  (change)="onAgioMaxInput($event.target.value)" required>
+  </mat-form-field>
+</mat-card>

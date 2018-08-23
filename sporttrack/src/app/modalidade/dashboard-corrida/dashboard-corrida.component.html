@@ -1,0 +1,19 @@
+<mat-card id="screenshot2">
+  <div class="dashboard-column">
+    <corrida-ranking-table></corrida-ranking-table>
+  </div>
+  <div class="dashboard-column" style="margin-left: 15px">
+    <div>
+      <app-corrida-ficha-tecnica></app-corrida-ficha-tecnica>
+    </div>
+    <div>
+      <app-corrida-numeros></app-corrida-numeros>
+    </div>
+  </div>
+  <div class="dashboard-column" style="margin-left: 15px">
+    <app-corrida-mapa-brasil></app-corrida-mapa-brasil>
+  </div>
+  <div>
+    <button mat-button matTooltip="Tirar uma foto desta tela" (click)="takeScreenShot()">Screenshot</button>
+  </div>
+</mat-card>

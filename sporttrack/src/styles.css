@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~handsontable-pro/dist/handsontable.full.css';
+body { margin: 0; }
+
+.mat-tooltip {
+    font-size: 10px !important;
+}
+
+.mat-tab-label {
+  min-width: 100px;
+  width: 80px;
+  padding: 0 10px;
+}
+
+.handsontable th {
+  background-color:#4db4bb;
+  color: #ffffff;
+}
+
+html, body {
+  margin:0;
+  padding:0;
+  height:100%;
+}
+
+.mat-card mat-card{
+  background-color: white;
+}

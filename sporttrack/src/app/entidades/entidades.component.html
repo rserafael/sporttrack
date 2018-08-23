@@ -1,0 +1,85 @@
+<mat-card class="mat-elevation-z1">
+  <mat-card>
+    <form>
+      <mat-form-field class="search-field">
+        <input matInput placeholder="Procurar" value="" (keyup)="applyFilter($event.target.value)">
+      </mat-form-field>
+    </form>
+
+    <mat-table #table [dataSource]="dataSource" matSort aria-label="Elements">
+
+
+      <!-- Nome Column -->
+      <ng-container matColumnDef="nome">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Nome</mat-header-cell>
+        <mat-cell *matCellDef="let entidade">{{entidade.nome}}</mat-cell>
+      </ng-container>
+
+      <!-- Investimento Column -->
+      <ng-container matColumnDef="investimento">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Investimento</mat-header-cell>
+        <mat-cell *matCellDef="let entidade">{{entidade.investimento.toLocaleString('pt')}}</mat-cell>
+      </ng-container>
+
+      <!-- Pontos com peso Column -->
+      <ng-container matColumnDef="pontosComPeso">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Pontos com peso</mat-header-cell>
+        <mat-cell *matCellDef="let entidade">{{entidade.pontosComPeso}}</mat-cell>
+      </ng-container>
+
+      <!-- Pontos sem peso Column -->
+      <ng-container matColumnDef="pontosSemPeso">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Pontos sem peso</mat-header-cell>
+        <mat-cell *matCellDef="let entidade">{{entidade.pontosSemPeso}}</mat-cell>
+      </ng-container>
+
+      <!-- Data criação -->
+      <ng-container matColumnDef="data">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Data da criação</mat-header-cell>
+        <mat-cell *matCellDef="let entidade">{{entidade.data.toDateString()}}</mat-cell>
+      </ng-container>
+
+      <!-- Acoes Column -->
+      <!--<ng-container matColumnDef="acoes">-->
+      <!--<mat-header-cell *matHeaderCellDef mat-sort-header>Ações</mat-header-cell>-->
+      <!--<mat-cell *matCellDef="let row">-->
+      <!--<a matTooltip="Editar entidade">-->
+      <!--<i class="fas fa fa-edit fa-2x" style="color:blue" (click)="editarEntidade(row.nome)"></i>-->
+      <!--</a>-->
+      <!--<a matTooltip="Excluir entidade">-->
+      <!--<i class="fas fa fa-window-close fa-2x" style="color:red" (click)="deletarEntidade(row.nome)"></i>-->
+      <!--</a>-->
+      <!--</mat-cell>-->
+      <!--</ng-container>-->
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;let i = index" class="selectedRow" (click)="onSelect(row,i)"></mat-row>
+
+    </mat-table>
+
+    <mat-paginator #paginator [length]="0" [pageIndex]="0" [pageSize]="5" [pageSizeOptions]="[5, 10, 15]">
+    </mat-paginator>
+
+    <div class="sideBySide">
+      <mat-card-actions>
+        <button [disabled]="!admin" style="margin-left: 15px" routerlink="/" mat-button matTooltip="Criar nova entidade" (click)="criarEntidade()" *ngIf="dataLoaded === true">Nova entidade</button>
+      </mat-card-actions>
+
+      <mat-card-actions>
+        <button [disabled]="!admin" routerlink="/" mat-button matTooltip="Salvar as alterações" style="margin-left: 50px" (click)="salvarEntidade()"
+          *ngIf="entidadeSelecionada">Salvar entidade</button>
+      </mat-card-actions>
+    </div>
+
+    <mat-grid-list cols="3" rowHeight="1:1" *ngIf="entidadeSelecionada">
+      <app-entidade [entidade]="entidadeSelecionada"></app-entidade>
+      <entidades-contratotable [entidade]="entidadeSelecionada" [controleIdContratos]="controleIdContratos"></entidades-contratotable>
+    </mat-grid-list>
+
+    <div class="example-section">
+      <mat-progress-spinner style="margin-left: 250px;" *ngIf="dataLoaded === false" [diameter]="60" [color]="spinnerColor" [mode]="spinnerMode">
+      </mat-progress-spinner>
+    </div>
+  </mat-card>
+
+</mat-card>

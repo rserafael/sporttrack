@@ -1,0 +1,33 @@
+.sidenav-container {
+  width: 200px;
+  height: 100%;
+  background-color:  #e0f2f3;
+}
+
+.sidenav {
+  width: 300px;
+  box-shadow: 3px 0 6px rgba(0,0,0,.24);
+}
+
+.inner-sidenav-content {
+  overflow: auto;
+  position: absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  top:64px;
+}
+
+.app-toolbar {
+  position: sticky;
+  position: -webkit-sticky; /* For macOS/iOS Safari */
+  top: 0; /* Sets the sticky toolbar to be on top */
+  z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
+}
+
+.fill-remaining-space {
+  /* This fills the remaining space, by using flexbox.
+     Every toolbar row uses a flexbox row layout. */
+  flex: 1 1 auto;
+}
+

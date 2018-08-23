@@ -1,0 +1,61 @@
+<mat-card class="example-container">
+  <mat-table #table [dataSource]="dataSource" matSort aria-label="Elements">
+
+    <!-- Id Column -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.id}}</mat-cell>
+    </ng-container>
+
+    <!-- Valor Column -->
+    <ng-container matColumnDef="valor">
+      <mat-header-cell *matHeaderCellDef> Valor </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <mat-form-field>
+          <input currencyMask [(ngModel)]="row.valor" [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" matInput placeholder="Digite o valor do investimento">
+        </mat-form-field>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Data Inicio Column -->
+    <ng-container matColumnDef="dataInicio">
+      <mat-header-cell *matHeaderCellDef>Data início</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+      <mat-form-field>
+        <input matInput  [(ngModel)]="row.dataInicio" [matDatepicker]="picker1" placeholder="Data do início do contrato" (dateChange)="onDateChange(row)">
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+    </mat-cell>
+    </ng-container>
+
+    <!-- Data Fim Column -->
+    <!--<ng-container matColumnDef="dataFim">-->
+      <!--<mat-header-cell *matHeaderCellDef mat-sort-header>Data fim</mat-header-cell>-->
+      <!--<mat-cell *matCellDef="let row">{{row.dataFim.toDateString()}}</mat-cell>-->
+    <!--</ng-container>-->
+
+    <!-- Acoes Column -->
+    <ng-container matColumnDef="acoes">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Ações</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <a matTooltip="Salvar contrato">
+          <i class="fas fa fa-check-square fa-2x" style="color:green" (click)="salvarContrato(row)"></i>
+        </a>
+        <a matTooltip="Excluir contrato">
+          <i class="fas fa fa-window-close fa-2x" style="color:red; margin-left: 4px" (click)="deletarContrato(row)"></i>
+        </a>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <mat-paginator #paginator [length]="0" [pageIndex]="0" [pageSize]="5" [pageSizeOptions]="[5, 10]">
+  </mat-paginator>
+
+  <mat-card-actions>
+    <button [disabled]="!admin" routerlink="/" mat-button matTooltip="Criar novo contrato" (click)="criarContrato()">Novo contrato</button>
+  </mat-card-actions>
+</mat-card>

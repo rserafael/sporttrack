@@ -1,0 +1,23 @@
+/*feito pelo gondim*/
+
+.ficha-tecnica-content {
+  width: 65%;
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  height: 130px;
+}
+
+.ficha-tecnica-logo {
+  width: 30%;
+  display: inline-block;
+  vertical-align: center;
+  margin-top: 10px;
+}
+
+.ficha-tecnica {
+  background-color: white;
+}
+
+

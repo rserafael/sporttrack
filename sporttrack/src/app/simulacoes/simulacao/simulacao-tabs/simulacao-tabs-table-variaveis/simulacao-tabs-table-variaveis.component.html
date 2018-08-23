@@ -1,0 +1,38 @@
+<div>
+  <mat-table #table [dataSource]="dataSource" matSort aria-label="Elements">
+
+    <!-- Checkbox Column -->
+    <ng-container matColumnDef="select">
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-checkbox (change)="$event ? masterToggleVariables() : null" [checked]="selectionForVariables.hasValue() && isAllVariablesSelected()"
+          [indeterminate]="selectionForVariables.hasValue() && !isAllVariablesSelected()">
+        </mat-checkbox>
+      </th>
+      <td mat-cell *matCellDef="let row">
+        <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? onChecked(row) : null" [checked]="selectionForVariables.isSelected(row)">
+        </mat-checkbox>
+      </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="nome">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Nome</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.nome}}</mat-cell>
+    </ng-container>
+
+    <!-- Peso Column -->
+    <ng-container matColumnDef="peso">
+      <th mat-header-cell *matHeaderCellDef> Peso </th>
+      <td mat-cell *matCellDef="let element">
+        <mat-form-field class="outline">
+          <input [(ngModel)]="element.peso" matInput placeholder="Digite o peso">
+        </mat-form-field>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" (keyup.enter)="changePeso(row)"></mat-row>
+  </mat-table>
+
+  <mat-paginator #paginator [length]="0" [pageIndex]="0" [pageSize]="8">
+  </mat-paginator>
+</div>
